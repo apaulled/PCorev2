@@ -1,15 +1,11 @@
 package me.apaulled.pcorev2.points;
 
 import me.apaulled.pcorev2.houses.House;
-import me.apaulled.pcorev2.pwapi.PWApiHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.json.JSONObject;
-
-import java.io.IOException;
 
 public class HousePointsCommand implements CommandExecutor {
     @Override

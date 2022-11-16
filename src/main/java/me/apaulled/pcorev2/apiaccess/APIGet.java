@@ -1,4 +1,4 @@
-package me.apaulled.pcorev2.pwapi;
+package me.apaulled.pcorev2.apiaccess;
 
 
 import org.apache.http.HttpResponse;
@@ -7,14 +7,13 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PWApiHandler {
+public class APIGet {
 
     private String responseString;
 
-    public PWApiHandler(String urlString) throws IOException {
+    public APIGet(String urlString) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(urlString);
 
