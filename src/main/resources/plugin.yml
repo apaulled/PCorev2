@@ -1,0 +1,14 @@
+name: PCorev2
+version: '${project.version}'
+main: me.apaulled.pcorev2.PCorev2
+authors: [ apaulled ]
+description: General Utility
+
+commands:
+  Friend:
+  Vault:
+  Cg:
+  Party:
+  Houses:
+  Points:
+  Dcmd:
