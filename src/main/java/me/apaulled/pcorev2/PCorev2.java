@@ -37,8 +37,7 @@ public final class PCorev2 extends JavaPlugin {
         this.getCommand("Dcmd").setExecutor(new DelayCommand());
         this.getServer().getPluginManager().registerEvents(new FriendListener(), this);
 
-        TipMenu tipMenu = new TipMenu("config.yml");
-        TipRunnable tips = new TipRunnable(tipMenu);
+        TipRunnable tips = new TipRunnable(new TipMenu("config.yml"));
         tips.startTips();
 
     }
