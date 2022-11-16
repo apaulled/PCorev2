@@ -16,7 +16,7 @@ public class DelayCommand implements CommandExecutor {
         String commandString = args[1];
         String[] newArgs = Arrays.copyOfRange(args, 2, args.length);
 
-        int task = Bukkit.getScheduler().scheduleSyncDelayedTask(PCorev2.plugin, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(PCorev2.plugin, new Runnable() {
             public void run() {
                 PCorev2.plugin.getCommand(commandString).execute(sender, label, newArgs);
             }

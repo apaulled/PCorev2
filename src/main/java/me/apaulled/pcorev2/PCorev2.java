@@ -9,8 +9,11 @@ import me.apaulled.pcorev2.party.PartyManager;
 import me.apaulled.pcorev2.houses.HousesCommand;
 import me.apaulled.pcorev2.singlecommands.DelayCommand;
 import me.apaulled.pcorev2.points.HousePointsCommand;
+import me.apaulled.pcorev2.tips.TipMenu;
+import me.apaulled.pcorev2.tips.TipRunnable;
 import me.apaulled.pcorev2.vault.VaultCommand;
 import me.apaulled.pcorev2.vault.VaultManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PCorev2 extends JavaPlugin {
@@ -33,6 +36,11 @@ public final class PCorev2 extends JavaPlugin {
         this.getCommand("Points").setExecutor(new HousePointsCommand());
         this.getCommand("Dcmd").setExecutor(new DelayCommand());
         this.getServer().getPluginManager().registerEvents(new FriendListener(), this);
+
+        TipMenu tipMenu = new TipMenu("config.yml");
+        TipRunnable tips = new TipRunnable(tipMenu);
+        tips.startTips();
+
     }
     @Override
     public void onDisable() {
