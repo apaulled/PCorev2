@@ -19,7 +19,6 @@ public class HousePointsCommand implements CommandExecutor {
         HousePointsRequest request = new HousePointsRequest();
         HousePointsResponse pointsResponse = new HousePointsResponse(request.getRawJsonText());
 
-        source.sendMessage("test");
         source.sendTitle(ChatColor.GOLD + "House Points", ChatColor.translateAlternateColorCodes('&',
                     "&4G: " + pointsResponse.getHousePoints(House.griffin) +
                                 " &8| &eH: " + pointsResponse.getHousePoints(House.honeybadger) +
