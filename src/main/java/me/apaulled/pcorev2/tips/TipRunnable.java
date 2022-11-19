@@ -15,7 +15,6 @@ public class TipRunnable {
             @Override
             public void run () {
                 Bukkit.broadcastMessage(tipMenu.getRandomTip());
-                //test
             }
         },0L, tipMenu.getTipInterval());
     }
