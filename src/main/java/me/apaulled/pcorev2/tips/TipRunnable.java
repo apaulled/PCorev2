@@ -12,10 +12,14 @@ public class TipRunnable {
     }
 
     public void startTips() {
-        PCorev2.getScheduler().runTaskTimer("tip", new PRunnable() {
+        PCorev2.getScheduler().runTaskTimer(new PRunnable() {
             @Override
             public void run () {
                 Bukkit.broadcastMessage(tipMenu.getRandomTip());
+            }
+
+            public String getId() {
+                return "tip";
             }
         },0, tipMenu.getTipInterval());
     }
