@@ -1,6 +1,7 @@
 package me.apaulled.pcorev2.tips;
 
 import me.apaulled.pcorev2.PCorev2;
+import me.apaulled.pcorev2.scheduler.PRunnable;
 import org.bukkit.Bukkit;
 
 public class TipRunnable {
@@ -11,11 +12,11 @@ public class TipRunnable {
     }
 
     public void startTips() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(PCorev2.plugin, new Runnable() {
+        PCorev2.getScheduler().runTaskTimer("tip", new PRunnable() {
             @Override
             public void run () {
                 Bukkit.broadcastMessage(tipMenu.getRandomTip());
             }
-        },0L, tipMenu.getTipInterval());
+        },0, tipMenu.getTipInterval());
     }
 }

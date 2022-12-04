@@ -7,6 +7,7 @@ import me.apaulled.pcorev2.friend.FriendManager;
 import me.apaulled.pcorev2.party.PartyCommand;
 import me.apaulled.pcorev2.party.PartyManager;
 import me.apaulled.pcorev2.houses.HousesCommand;
+import me.apaulled.pcorev2.scheduler.Scheduler;
 import me.apaulled.pcorev2.singlecommands.DelayCommand;
 import me.apaulled.pcorev2.points.HousePointsCommand;
 import me.apaulled.pcorev2.tips.TipMenu;
@@ -21,6 +22,8 @@ public final class PCorev2 extends JavaPlugin {
     public static FriendManager friendManager;
     public static VaultManager vaultManager;
     public static PartyManager partyManager;
+    public static Scheduler scheduler;
+    public static long ticks;
 
     @Override
     public void onEnable() {
@@ -28,6 +31,7 @@ public final class PCorev2 extends JavaPlugin {
         friendManager = new FriendManager();
         vaultManager = new VaultManager();
         partyManager = new PartyManager();
+        scheduler = new Scheduler();
         this.getCommand("Friend").setExecutor(new FriendCommand());
         this.getCommand("Cg").setExecutor(new CenterCommand());
         this.getCommand("Vault").setExecutor(new VaultCommand());
@@ -39,6 +43,13 @@ public final class PCorev2 extends JavaPlugin {
 
         TipRunnable tips = new TipRunnable(new TipMenu("config.yml"));
         tips.startTips();
+
+        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
+            public void run() {
+                scheduler.checkRun();
+                ticks++;
+            }
+        }, 1, 1);
 
     }
     @Override
@@ -58,5 +69,9 @@ public final class PCorev2 extends JavaPlugin {
 
     public static PartyManager getPartyManager() {
         return partyManager;
+    }
+
+    public static Scheduler getScheduler() {
+        return scheduler;
     }
 }
