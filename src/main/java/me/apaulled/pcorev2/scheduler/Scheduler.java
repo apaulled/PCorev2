@@ -8,34 +8,53 @@ import java.util.Comparator;
 
 public class Scheduler {
     private ArrayList<PTask> queue;
+    private long ticks;
     public Scheduler() {
-        this.queue = new ArrayList<>();
+        queue = new ArrayList<>();
+        ticks = 0;
+        Bukkit.getScheduler().runTaskTimer(PCorev2.plugin, new Runnable() {
+            public void run() {
+                checkRun();
+                ticks++;
+            }
+        }, 1, 1);
     }
     public void runTask(PRunnable task) {
-        queue.add(new PTask(task));
-        queue.sort(Comparator.comparingLong(PTask::getRunTime));
+        PTask pTask = new PTask(task);
+        runTaskHelper(pTask);
     }
 
     public void runTaskLater(PRunnable task, long delay) {
-        queue.add(new PTask(task, delay));
-        queue.sort(Comparator.comparingLong(PTask::getRunTime));
+        PTask pTask = new PTask(task, delay);
+        runTaskHelper(pTask);
     }
 
     public void runTaskTimer(PRunnable task, long delay, long repeat) {
-        queue.add(new PTask(task, delay, repeat));
+        PTask pTask = new PTask(task, delay, repeat);
+        runTaskHelper(pTask);
+    }
+
+    private void runTaskHelper(PTask pTask) {
+        queue.add(pTask);
         queue.sort(Comparator.comparingLong(PTask::getRunTime));
+        Bukkit.getConsoleSender().sendMessage("Task with ID (" + pTask.getTask().getId() + ") has been registered.");
     }
 
     public void checkRun() {
-        if (!queue.isEmpty()) {
-            if (queue.get(0).getRunTime() <= PCorev2.ticks) {
-                Bukkit.getConsoleSender().sendMessage("Task with ID (" + queue.get(0).getTask().getId() + ") has been run at " + PCorev2.ticks + ".");
-                if (queue.get(0).isRepeatable()) {
-                    queue.add(new PTask(queue.get(0).getTask(), queue.get(0).getRepeat(), queue.get(0).getRepeat()));
+        for (PTask task : new ArrayList<>(queue)) {
+            if (task.getRunTime() <= PCorev2.getScheduler().getTicks()) {
+                task.run();
+                Bukkit.getConsoleSender().sendMessage("Task with ID (" + task.getTask().getId() + ") has been run at " + PCorev2.getScheduler().getTicks() + ".");
+                if (task.isRepeatable()) {
+                    task.setRunTime(task.getRunTime() + task.getRepeat());
+                } else {
+                    queue.remove(task);
                 }
-                queue.get(0).run();
-                queue.remove(0);
             }
         }
+    }
+
+    public long getTicks() {
+        return ticks;
     }
 }

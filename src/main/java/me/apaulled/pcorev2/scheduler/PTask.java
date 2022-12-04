@@ -4,7 +4,7 @@ import me.apaulled.pcorev2.PCorev2;
 import org.bukkit.Bukkit;
 
 public class PTask {
-    private final long runTime;
+    private long runTime;
     private long repeat;
     private boolean repeatable;
     private final PRunnable task;
@@ -12,21 +12,18 @@ public class PTask {
     public PTask(PRunnable task, long delay, long repeat) {
         this.task = task;
         this.repeatable = true;
-        this.runTime = PCorev2.ticks + delay;
+        this.runTime = PCorev2.getScheduler().getTicks() + delay;
         this.repeat = repeat;
-        Bukkit.getConsoleSender().sendMessage("Task with ID (" + task.getId() + ") has been registered.");
     }
 
     public PTask(PRunnable task, long delay) {
         this.task = task;
-        this.runTime = PCorev2.ticks + delay;
-        Bukkit.getConsoleSender().sendMessage("Task with ID (" + task.getId() + ") has been registered.");
+        this.runTime = PCorev2.getScheduler().getTicks() + delay;
     }
 
     public PTask(PRunnable task) {
         this.task = task;
-        this.runTime = PCorev2.ticks;
-        Bukkit.getConsoleSender().sendMessage("Task with ID (" + task.getId() + ") has been registered.");
+        this.runTime = PCorev2.getScheduler().getTicks();
     }
 
     public void run() {
@@ -47,5 +44,9 @@ public class PTask {
 
     public PRunnable getTask() {
         return task;
+    }
+
+    public void setRunTime(long runTime) {
+        this.runTime = runTime;
     }
 }

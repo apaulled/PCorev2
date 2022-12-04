@@ -14,7 +14,6 @@ import me.apaulled.pcorev2.tips.TipMenu;
 import me.apaulled.pcorev2.tips.TipRunnable;
 import me.apaulled.pcorev2.vault.VaultCommand;
 import me.apaulled.pcorev2.vault.VaultManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PCorev2 extends JavaPlugin {
@@ -23,7 +22,6 @@ public final class PCorev2 extends JavaPlugin {
     public static VaultManager vaultManager;
     public static PartyManager partyManager;
     public static Scheduler scheduler;
-    public static long ticks;
 
     @Override
     public void onEnable() {
@@ -43,13 +41,6 @@ public final class PCorev2 extends JavaPlugin {
 
         TipRunnable tips = new TipRunnable(new TipMenu("config.yml"));
         tips.startTips();
-
-        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-            public void run() {
-                scheduler.checkRun();
-                ticks++;
-            }
-        }, 1, 1);
 
     }
     @Override
