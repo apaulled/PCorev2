@@ -40,4 +40,5 @@ public class CenterList {
         }
         return slotList;
     }
+
 }
