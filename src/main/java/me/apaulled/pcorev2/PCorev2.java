@@ -26,7 +26,7 @@ public final class PCorev2 extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        friendManager = new FriendManager();
+        friendManager = new FriendManager(); //test comment
         vaultManager = new VaultManager();
         partyManager = new PartyManager();
         scheduler = new Scheduler();
