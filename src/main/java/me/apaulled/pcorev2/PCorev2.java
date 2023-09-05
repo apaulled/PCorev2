@@ -4,6 +4,8 @@ import me.apaulled.pcorev2.centergui.CenterCommand;
 import me.apaulled.pcorev2.friend.FriendCommand;
 import me.apaulled.pcorev2.friend.FriendListener;
 import me.apaulled.pcorev2.friend.FriendManager;
+import me.apaulled.pcorev2.hci.SliderGui;
+import me.apaulled.pcorev2.hci.SliderListener;
 import me.apaulled.pcorev2.party.PartyCommand;
 import me.apaulled.pcorev2.party.PartyManager;
 import me.apaulled.pcorev2.houses.HousesCommand;
@@ -37,7 +39,9 @@ public final class PCorev2 extends JavaPlugin {
         this.getCommand("Houses").setExecutor(new HousesCommand());
         this.getCommand("Points").setExecutor(new HousePointsCommand());
         this.getCommand("Dcmd").setExecutor(new DelayCommand());
+        this.getCommand("Slider").setExecutor(new SliderGui());
         this.getServer().getPluginManager().registerEvents(new FriendListener(), this);
+        this.getServer().getPluginManager().registerEvents(new SliderListener(), this);
 
         TipRunnable tips = new TipRunnable(new TipMenu("config.yml"));
         tips.startTips();
