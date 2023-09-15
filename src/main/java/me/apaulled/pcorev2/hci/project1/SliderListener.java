@@ -1,4 +1,4 @@
-package me.apaulled.pcorev2.hci;
+package me.apaulled.pcorev2.hci.project1;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,7 +19,7 @@ public class SliderListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getClickedInventory();
 
-        if (inventory.getTitle().equals("Day Progress")) {
+        if (inventory.getTitle().equals("Time of Day Slider")) {
             event.setCancelled(true);
             int clickedSlot = event.getSlot();
 

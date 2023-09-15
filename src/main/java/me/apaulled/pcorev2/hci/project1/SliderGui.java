@@ -1,4 +1,4 @@
-package me.apaulled.pcorev2.hci;
+package me.apaulled.pcorev2.hci.project1;
 
 import me.apaulled.pcorev2.centergui.CenterList;
 import org.bukkit.Bukkit;
