@@ -1,17 +1,15 @@
 package me.apaulled.pcorev2.hci.project2;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhoneUtils {
+public class VaultUtils {
 
     public static final List<Integer> DIAL_SLOTS = List.of(21, 22, 23, 30, 31, 32, 39, 40, 41);
     public static final Integer DELETE_SLOT = 19;
@@ -34,8 +32,8 @@ public class PhoneUtils {
         }
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + num.toString());
-        meta.setLore(List.of(ChatColor.GREEN + "Click to dial number"));
+        meta.setDisplayName("§6" + num);
+        meta.setLore(List.of(ChatColor.GREEN + "Click to enter number"));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;
@@ -54,8 +52,8 @@ public class PhoneUtils {
     public static ItemStack getCheckmark() {
         ItemStack item = getUnbreakableItem((short) 11, Material.GOLD_SPADE);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "Dial Entered Phone Number");
-        meta.setLore(List.of(ChatColor.GREEN + "Click to dial the phone!"));
+        meta.setDisplayName(ChatColor.GOLD + "Attempt to Unlock Vault");
+        meta.setLore(List.of(ChatColor.GREEN + "Click to unlock the vault!"));
         item.setItemMeta(meta);
         return item;
     }
