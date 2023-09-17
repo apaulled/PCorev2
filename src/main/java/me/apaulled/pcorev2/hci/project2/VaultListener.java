@@ -88,7 +88,7 @@ public class VaultListener implements Listener {
         ItemMeta meta = gold.getItemMeta();
         meta.setDisplayName("§6Gold");
         gold.setItemMeta(meta);
-        Inventory gui = Bukkit.createInventory(null, 54 ,ChatColor.GOLD + "Treasure");
+        Inventory gui = Bukkit.createInventory(null, 54 ,ChatColor.GOLD + "Vault");
         for (int i = 0; i < 54; i++) {
             int rand = random.nextInt(100);
             if (rand < 67) gui.setItem(i, gold);
