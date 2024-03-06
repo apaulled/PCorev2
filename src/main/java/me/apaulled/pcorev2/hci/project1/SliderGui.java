@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SliderGui implements CommandExecutor {
 
@@ -29,7 +30,7 @@ public class SliderGui implements CommandExecutor {
 
         Inventory gui = Bukkit.createInventory(null, size,"Time of Day Slider");
 
-        ArrayList<Integer> slots = CenterList.slots(Integer.parseInt(args[1]), itemCount);
+        List<Integer> slots = CenterList.slots(Integer.parseInt(args[1]), itemCount);
         for (int i: slots) {
             gui.setItem(i, item);
         }

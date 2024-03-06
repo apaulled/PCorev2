@@ -19,7 +19,7 @@ public class HousePointsCommand implements CommandExecutor {
                     "&4G: " + pointsResponse.getHousePoints(House.GRIFFIN) +
                                 " &8| &eH: " + pointsResponse.getHousePoints(House.HONEYBADGER) +
                                 " &8| &2S: " + pointsResponse.getHousePoints(House.SERPENT) +
-                                " &8| &9R: " + pointsResponse.getHousePoints(House.RAVEN))/*, 10, 70, 20*/);
+                                " &8| &9R: " + pointsResponse.getHousePoints(House.RAVEN)), 10, 70, 20);
         return true;
     }
 }
