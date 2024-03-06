@@ -34,7 +34,7 @@ public class VaultManager {
     }
 
     public int hasVault(Player player, int vaultNumber) {
-        Map innerMap = this.vaultMap.get(player.getUniqueId());
+        Map<Integer, Vault> innerMap = this.vaultMap.get(player.getUniqueId());
         if (innerMap == null) {
             return 1;
         }
