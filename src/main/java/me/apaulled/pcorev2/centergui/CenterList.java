@@ -1,10 +1,11 @@
 package me.apaulled.pcorev2.centergui;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CenterList {
-    public static ArrayList<Integer> slots(int numRows, int itemCount) {
-        ArrayList<Integer> slotList = new ArrayList<>();
+    public static List<Integer> slots(int numRows, int itemCount) {
+        List<Integer> slotList = new ArrayList<>();
         int size = numRows * 9;
         int center = size / 2;
 

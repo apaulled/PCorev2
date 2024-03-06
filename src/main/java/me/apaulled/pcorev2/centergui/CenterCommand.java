@@ -10,6 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CenterCommand implements CommandExecutor {
     @Override
@@ -22,7 +23,7 @@ public class CenterCommand implements CommandExecutor {
         Inventory gui = Bukkit.createInventory(null,size,"Centered GUI");
 
         long startTime = System.nanoTime();
-        ArrayList<Integer> slots = CenterList.slots(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+        List<Integer> slots = CenterList.slots(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
         long elapsedTime = System.nanoTime() - startTime;
         Bukkit.broadcastMessage(String.valueOf(elapsedTime));
         for (int i: slots) {

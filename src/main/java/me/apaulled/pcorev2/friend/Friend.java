@@ -4,13 +4,14 @@ import me.apaulled.pcorev2.PCorev2;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Friend {
 
     private Player player;
-    private ArrayList<Friend> friends;
-    private ArrayList<Friend> friendInvites;
-    private ArrayList<Friend> friendRequests;
+    private List<Friend> friends;
+    private List<Friend> friendInvites;
+    private List<Friend> friendRequests;
 
     public Friend(Player player) {
         this.player = player;
@@ -23,15 +24,15 @@ public class Friend {
         return this.player;
     }
 
-    public ArrayList<Friend> getFriends() {
+    public List<Friend> getFriends() {
         return this.friends;
     }
 
-    public ArrayList<Friend> getFriendRequests() {
+    public List<Friend> getFriendRequests() {
         return this.friendRequests;
     }
 
-    public ArrayList<Friend> getFriendInvites() {
+    public List<Friend> getFriendInvites() {
         return this.friendInvites;
     }
 

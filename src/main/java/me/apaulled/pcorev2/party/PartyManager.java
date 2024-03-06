@@ -3,10 +3,11 @@ package me.apaulled.pcorev2.party;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class PartyManager {
-    private HashMap<UUID, Party> partyMap;
+    private Map<UUID, Party> partyMap;
 
     public PartyManager() {
         this.partyMap = new HashMap<>();

@@ -3,8 +3,8 @@ package me.apaulled.pcorev2.scheduler;
 import me.apaulled.pcorev2.PCorev2;
 import org.bukkit.Bukkit;
 
-public class PTask {
-    private long runTime;
+public class PTask implements Comparable<PTask> {
+    private Long runTime;
     private long repeat;
     private boolean repeatable;
     private final PRunnable task;
@@ -26,11 +26,13 @@ public class PTask {
         this.runTime = PCorev2.getScheduler().getTicks();
     }
 
+
+
     public void run() {
         task.run();
     }
 
-    public long getRunTime() {
+    public Long getRunTime() {
         return runTime;
     }
 
@@ -46,7 +48,12 @@ public class PTask {
         return task;
     }
 
-    public void setRunTime(long runTime) {
+    public void setRunTime(Long runTime) {
         this.runTime = runTime;
+    }
+
+    @Override
+    public int compareTo(PTask o) {
+        return this.runTime.compareTo(o.getRunTime());
     }
 }

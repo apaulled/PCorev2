@@ -3,14 +3,13 @@ package me.apaulled.pcorev2.scheduler;
 import me.apaulled.pcorev2.PCorev2;
 import org.bukkit.Bukkit;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
 
 public class Scheduler {
-    private ArrayList<PTask> queue;
+    private final Queue<PTask> queue;
     private long ticks;
     public Scheduler() {
-        queue = new ArrayList<>();
+        queue = new PriorityQueue<>();
         ticks = 0;
         Bukkit.getScheduler().runTaskTimer(PCorev2.plugin, new Runnable() {
             public void run() {
@@ -35,22 +34,20 @@ public class Scheduler {
     }
 
     private void runTaskHelper(PTask pTask) {
-        queue.add(pTask);
-        queue.sort(Comparator.comparingLong(PTask::getRunTime));
+        queue.offer(pTask);
         Bukkit.getConsoleSender().sendMessage("Task with ID (" + pTask.getTask().getId() + ") has been registered.");
     }
 
     public void checkRun() {
-        for (PTask task : new ArrayList<>(queue)) {
-            if (task.getRunTime() <= PCorev2.getScheduler().getTicks()) {
-                task.run();
-                Bukkit.getConsoleSender().sendMessage("Task with ID (" + task.getTask().getId() + ") has been run at " + PCorev2.getScheduler().getTicks() + ".");
-                if (task.isRepeatable()) {
-                    task.setRunTime(task.getRunTime() + task.getRepeat());
-                } else {
-                    queue.remove(task);
-                }
+        PTask nextTask = queue.peek();
+        while (nextTask != null && nextTask.getRunTime() <= PCorev2.getScheduler().getTicks()) {
+            queue.poll();
+            nextTask.run();
+            Bukkit.getConsoleSender().sendMessage("Task with ID (" + nextTask.getTask().getId() + ") has been run at " + PCorev2.getScheduler().getTicks() + ".");
+            if (nextTask.isRepeatable()) {
+                nextTask.setRunTime(nextTask.getRunTime() + nextTask.getRepeat());
             }
+            nextTask = queue.peek();
         }
     }
 

@@ -4,12 +4,13 @@ import me.apaulled.pcorev2.PCorev2;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Party {
     private Player leader;
-    private ArrayList<Player> members;
-    private ArrayList<Player> invites;
+    private List<Player> members;
+    private List<Player> invites;
     PartyManager partyManager = PCorev2.getPartyManager();
 
     public Party (Player leader) {
@@ -23,7 +24,7 @@ public class Party {
         return this.leader;
     }
 
-    public ArrayList<Player> getMembers() {
+    public List<Player> getMembers() {
         return this.members;
     }
 

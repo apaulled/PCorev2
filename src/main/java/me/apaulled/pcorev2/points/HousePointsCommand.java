@@ -16,10 +16,10 @@ public class HousePointsCommand implements CommandExecutor {
         HousePointsResponse pointsResponse = new HousePointsResponse(request.getRawJsonText());
 
         source.sendTitle(ChatColor.GOLD + "House Points", ChatColor.translateAlternateColorCodes('&',
-                    "&4G: " + pointsResponse.getHousePoints(House.griffin) +
-                                " &8| &eH: " + pointsResponse.getHousePoints(House.honeybadger) +
-                                " &8| &2S: " + pointsResponse.getHousePoints(House.serpent) +
-                                " &8| &9R: " + pointsResponse.getHousePoints(House.raven)), 10, 70, 20);
+                    "&4G: " + pointsResponse.getHousePoints(House.GRIFFIN) +
+                                " &8| &eH: " + pointsResponse.getHousePoints(House.HONEYBADGER) +
+                                " &8| &2S: " + pointsResponse.getHousePoints(House.SERPENT) +
+                                " &8| &9R: " + pointsResponse.getHousePoints(House.RAVEN))/*, 10, 70, 20*/);
         return true;
     }
 }
